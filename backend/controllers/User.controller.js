@@ -1,5 +1,6 @@
 const User = require("../models/User.modle");
 
+//register
 exports.registerController = async (req,res) => {
   try {
     const {name, email, password} = req.body; 
@@ -21,5 +22,32 @@ exports.registerController = async (req,res) => {
   } catch (error) {
      console.error(error);
     res.status(500).json({ message: "Server error" });
+  }
+}
+
+//login 
+exports.loginController = async (req,res) => {
+  try {
+    const {email, password} = req.body;
+
+    const user = await User.findOne({email});
+    if (!user) {
+      return res.status(404).json({message: "User not found. Please register first."})
+    }
+
+    const isMatchPassword = await user.isComparePassword(password);
+    if (!isMatchPassword) {
+      return res.status(403).json({message: "Invalid credentials"})
+    }
+
+    res.status(201).json({message: "login successful",
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email
+      }
+    })
+  } catch (error) {
+    
   }
 }
