@@ -10,9 +10,10 @@ app.use(express.json())
 app.use(cookieParser())
 
 const authRoutes = require('./routes/Auth.routes');
+const agentRoutes = require('./routes/Agent.routes')
 
-
-app.use("/api/auth",authRoutes)
+app.use("/api/auth", authRoutes)
+app.use("/api/agent", agentRoutes)
 
 app.get("/",(req,res)=>{
   res.send("API is running...")

@@ -1,6 +1,7 @@
-const User = require("../models/User.modle");
+const User = require("../models/User.model");
 const generateToken = require("../utils/GenerateToken.utils");
 const setCookies = require("../utils/SetCookies.utils");
+
 //register
 exports.registerController = async (req,res) => {
   try {

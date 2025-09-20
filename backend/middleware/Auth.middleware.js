@@ -1,10 +1,10 @@
 const jwt = require("jsonwebtoken");
-const User = require("../models/User.modle");
+const User = require("../models/User.model");
 
 const protectRoutes = async (req,res,next) => {
   const token = req.cookies.token ||
   (req.headers.authorization &&
-    req.headers.authorization.startsWith("Beared") &&
+    req.headers.authorization.startsWith("Bearer") &&
     req.headers.authorization.split("")[1]
   );
 
@@ -13,9 +13,9 @@ const protectRoutes = async (req,res,next) => {
   }
 
   try {
-    const decoded = jwt.verify(token,process.env.TOKEN_KEY);
+    const decoded = jwt.verify(token,process.env.TOKEN_KEY);  
     req.user = await User.findById(decoded.userId).select("-password");
-
+   
     if (!req.user) {
      return res.status(401).json({message: "User not found. Please register"});
     }
