@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { loginApi } from "../services/AuthApi";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -12,7 +13,16 @@ const LoginPage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
- 
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    try {
+      const res = await loginApi(formData);
+      alert(res.data.message)
+      navigate("/dashboard") 
+    } catch (error) {
+      alert(error.response?.data?.message)
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-gray-100 to-gray-200 p-6">
