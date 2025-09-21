@@ -35,8 +35,19 @@ exports.getAgents = async (req,res) => {
 exports.getCustomersByAgent = async (req, res) => {
   try {
     const { agentId } = req.params;
-    const customers = await Customer.find({ assignedTo: agentId });  
-    res.status(200).json(customers);
+
+    //agent details
+    const agent = await Agent.findById(agentId).select("name email mobileNumber")
+
+    const customers = await Customer.find({ assignedTo: agentId });
+    
+    res.status(200).json({agent:{
+      name: agent.name,
+      email: agent.email,
+      mobileNumber: agent.mobileNumber
+    }, 
+    customers: customers
+  });
   } catch (error) {
     res.status(500).json({ message: "Error fetching customers", error: error.message });
   }

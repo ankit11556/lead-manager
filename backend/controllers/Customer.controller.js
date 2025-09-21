@@ -12,11 +12,11 @@ exports.uploadCSV = async (req,res) => {
     const results = [];
     fs.createReadStream(req.file.path)
     .pipe(csv())
-    .on("data",(data)=>{
+    .on("data",(data)=>{ 
       results.push({
-        firstName: data.FirstName,
-        phoneNumber: data.Phone,
-        notes: data.Notes
+       firstName: data.FirstName || data["FirstName"] || "",
+       phoneNumber: data.Phone || data["Phone"] || "",
+       notes: data.Notes || ""
       })
     })
     .on("end",async () => {
@@ -28,9 +28,11 @@ exports.uploadCSV = async (req,res) => {
 
      // distribute customers among agents
      let agentIndex = 0;
-     const customersToInsert = results.map((row)=>{
+     const customersToInsert = results
+      .filter(row => row.firstName && row.phoneNumber)
+     .map((row)=>{
       const agent = agents[agentIndex];
-      agentIndex(agentIndex+1) % agents.length  //round-robin
+      agentIndex = (agentIndex+1) % agents.length  //round-robin
 
       return{
         ...row,

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const customerSchema = new mongoose.Schema({
-  name: {
     firstName: {
       type: String,
       required: true
@@ -11,7 +10,7 @@ const customerSchema = new mongoose.Schema({
       required: true
     },
     notes: {
-      type: string
+      type: String
     },
      assignedTo: {
       type: mongoose.Schema.Types.ObjectId,
@@ -23,7 +22,7 @@ const customerSchema = new mongoose.Schema({
       ref: "User",
       required: true
      }
-  }
+  
 },{timestamps: true})
 
 const Customer = mongoose.model("Customer",customerSchema);
