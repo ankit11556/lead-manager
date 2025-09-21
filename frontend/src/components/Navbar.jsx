@@ -10,7 +10,7 @@ const Navbar = () => {
   const {user,logout} = useAuth()
 
   const links = [
-    { name: "Dashboard", path: "/dashboard" },
+    { name: "Dashboard", path: "/" },
     { name: "Add Agent", path: "/add-agent" },
     { name: "All Agents", path: "/all-agents" },
     { name: "Upload CSV", path: "/upload" },
@@ -21,7 +21,7 @@ const Navbar = () => {
       {/* Logo */}
       <div
         className="text-2xl font-bold text-white cursor-pointer hover:text-accent transition-colors"
-        onClick={() => navigate("/dashboard")}
+        onClick={() => navigate("/")}
       >
         LeadManager
       </div>

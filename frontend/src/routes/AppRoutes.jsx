@@ -19,7 +19,7 @@ const AppRoutes = () => {
   <Route path="/all-agents" element={<AllAgents/>}></Route>
   <Route path="/agent/:agentId" element={<AgentCustomers/>}></Route>
   <Route path="/upload" element={<UploadCSV/>}></Route>
-  <Route path="/dashboard" element={<Dashboard/>}></Route>
+  <Route path="/" element={<Dashboard/>}></Route>
   </Route>
 
 </Routes>
