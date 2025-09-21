@@ -12,10 +12,12 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
     "axios": "^1.12.2",
+    "card": "^2.5.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-icons": "^4.10.1",
     "react-router-dom": "^7.9.1",
+    "recharts": "^3.0.0-alpha.7",
     "tailwindcss": "^4.1.13"
   },
   "devDependencies": {

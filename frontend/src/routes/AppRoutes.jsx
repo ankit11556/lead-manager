@@ -5,6 +5,7 @@ import AddAgent from "../pages/AddAgent"
 import AllAgents from "../pages/AllAgents"
 import AgentCustomers from "../pages/View Customers"
 import UploadCSV from "../pages/UploadCSV"
+import Dashboard from "../pages/Dashboard"
 const AppRoutes = () => {
   return(
 <Routes>
@@ -14,6 +15,7 @@ const AppRoutes = () => {
   <Route path="/all-agents" element={<AllAgents/>}></Route>
   <Route path="/agent/:agentId" element={<AgentCustomers/>}></Route>
   <Route path="/upload" element={<UploadCSV/>}></Route>
+  <Route path="/dashboard" element={<Dashboard/>}></Route>
 </Routes>
   )
 }
