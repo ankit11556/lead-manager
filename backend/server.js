@@ -17,10 +17,12 @@ app.use(cookieParser())
 const authRoutes = require('./routes/Auth.routes');
 const agentRoutes = require('./routes/Agent.routes')
 const customerRoutes = require('./routes/Customer.routes')
+const dashboardRoutes = require('./routes/Dashboard.routes')
 
 app.use("/api/auth", authRoutes)
 app.use("/api/agent", agentRoutes)
 app.use("/api/customer",customerRoutes)
+app.use("/api/dashboard",dashboardRoutes)
 
 app.get("/",(req,res)=>{
   res.send("API is running...")
