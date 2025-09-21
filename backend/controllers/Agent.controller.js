@@ -1,4 +1,5 @@
 const Agent = require("../models/Agent.model");
+const Customer = require("../models/Customer.model");
 
 exports.createAgent = async (req,res) => {
   try {
@@ -30,3 +31,13 @@ exports.getAgents = async (req,res) => {
     res.status(500).json({message: "Error fetching agent",error: error.message});
   }
 }
+
+exports.getCustomersByAgent = async (req, res) => {
+  try {
+    const { agentId } = req.params;
+    const customers = await Customer.find({ assignedTo: agentId });  
+    res.status(200).json(customers);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching customers", error: error.message });
+  }
+};
