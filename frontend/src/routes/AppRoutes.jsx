@@ -3,6 +3,7 @@ import RegisterPage from "../pages/Register"
 import LoginPage from "../pages/Login"
 import AddAgent from "../pages/AddAgent"
 import AllAgents from "../pages/AllAgents"
+import AgentCustomers from "../pages/View Customers"
 const AppRoutes = () => {
   return(
 <Routes>
@@ -10,6 +11,7 @@ const AppRoutes = () => {
   <Route path="/login" element={<LoginPage/>}></Route>
   <Route path="/add-agent" element={<AddAgent/>}></Route>
   <Route path="/all-agents" element={<AllAgents/>}></Route>
+  <Route path="/agent/:agentId" element={<AgentCustomers/>}></Route>
 </Routes>
   )
 }

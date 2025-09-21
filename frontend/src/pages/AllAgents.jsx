@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
-import { allAgentsApi, getCustomersByAgentApi } from "../services/AgentApi";
+import { allAgentsApi } from "../services/AgentApi";
+import { useNavigate } from "react-router-dom";
 
 const AllAgents = () => {
+
+  const navigate = useNavigate()
+
   const [agents, setAgents] = useState([]);
   
   useEffect(() => {
@@ -16,15 +20,6 @@ const AllAgents = () => {
     fetchAgents();
   }, []);
 
-  const viewCustomers = async (agentId) => {
-    setSelectedAgent(agentId);
-    try {
-      const res = await getCustomersByAgentApi(agentId);
-      setCustomers(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   return (
     <div className="min-h-screen p-6 bg-gradient-to-r from-gray-100 to-gray-200">
@@ -48,7 +43,7 @@ const AllAgents = () => {
                 <td className="border px-4 py-2">{agent.mobileNumber}</td>
                 <td className="border px-4 py-2">
                   <button
-                    onClick={() => viewCustomers(agent._id)}
+                    onClick={() => navigate(`/agent/${agent._id}`)}
                     className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
                   >
                     View Customers
