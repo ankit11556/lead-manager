@@ -10,9 +10,7 @@ const AgentCustomers = () => {
     const fetchData = async () => {
       try {
         const res = await getCustomersByAgentApi(agentId)
-        setAgent(res.data.agent);
-        console.log(res.data);
-        
+        setAgent(res.data.agent);        
         setCustomers(res.data.customers);
       } catch (err) {
         console.log(err);

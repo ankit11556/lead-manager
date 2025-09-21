@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { uploadCSVApi } from "../services/AgentApi";
+import { useNavigate } from "react-router-dom";
 
 const UploadCSV = () => {
+
+  const navigate = useNavigate()
+
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -25,7 +29,8 @@ const UploadCSV = () => {
     try {
       const res = await uploadCSVApi(formData);
       setMessage(res.data.message);
-      setFile(null); // reset file input
+      setFile(null); 
+      navigate("/all-agents")
     } catch (err) {
       setMessage(err.response?.data?.message || "Error uploading CSV");
     }

@@ -22,11 +22,11 @@ const AllAgents = () => {
 
 
   return (
-    <div className="min-h-screen p-6 bg-gradient-to-r from-gray-100 to-gray-200">
-      <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-md p-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">All Agents</h2>
+    <div className="min-h-screen p-4 md:p-6 bg-gradient-to-r from-gray-100 to-gray-200 ">
+      <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-md p-4 md:p-6 w-full overflow-x-aut">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4 md:mb-6 text-center md:text-left">All Agents</h2>
 
-        <table className="w-full table-auto border border-gray-300">
+        <table className="w-full table-auto border border-gray-300 min-w-[500px]">
           <thead>
             <tr className="bg-gray-100">
               <th className="border px-4 py-2">Name</th>
