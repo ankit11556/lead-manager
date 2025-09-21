@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { addAgentApi } from "../services/AgentApi";
+import { useNavigate } from "react-router-dom";
 
 const AddAgent = () => {
+
+  const navigate = useNavigate()
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,6 +26,7 @@ const AddAgent = () => {
   }
       const res = await addAgentApi(formData);
       alert(res.data.message)
+      navigate("/all-agents")
     } catch (error) {
       alert(error.response?.data?.message)
     }

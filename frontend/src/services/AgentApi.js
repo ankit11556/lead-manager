@@ -7,3 +7,15 @@ export const addAgentApi = async (data) => {
    {withCredentials: true}
   )
 }
+
+export const allAgentsApi = async () => {
+  return axios.get(`${API_URL}/agent`,
+    {withCredentials: true}
+  )
+}
+
+export const getCustomersByAgentApi = async (agentId) => {
+  return axios.get(`${API_URL}/agent/${agentId}`,
+    {withCredentials: true}
+  )
+}
