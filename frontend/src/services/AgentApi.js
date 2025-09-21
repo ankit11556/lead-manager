@@ -14,8 +14,10 @@ export const allAgentsApi = async () => {
   )
 }
 
-export const getCustomersByAgentApi = async (agentId) => {
-  return axios.get(`${API_URL}/agent/${agentId}`,
-    {withCredentials: true}
-  )
-}
+
+export const uploadCSVApi = async (formData) => {
+  return axios.post(`${API_URL}/customer/upload`, formData, {
+    withCredentials: true,
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+};

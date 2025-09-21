@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getCustomersByAgentApi } from "../services/AgentApi";
-
+import {getCustomersByAgentApi} from "../services/CustomerApi"
 const AgentCustomers = () => {
   const { agentId } = useParams();
   const [agent, setAgent] = useState(null);
@@ -12,6 +11,8 @@ const AgentCustomers = () => {
       try {
         const res = await getCustomersByAgentApi(agentId)
         setAgent(res.data.agent);
+        console.log(res.data);
+        
         setCustomers(res.data.customers);
       } catch (err) {
         console.log(err);
