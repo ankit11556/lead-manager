@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate,Link} from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
 
 const Navbar = () => {
@@ -41,7 +41,7 @@ const Navbar = () => {
         <button
           className="bg-white text-indigo-500 hover:cursor-pointer hover:text-indigo-600 px-3 py-1 rounded transition-colors"
         >
-          Login
+         <Link to="/login">Login</Link> 
         </button>
       </div>
 
@@ -72,7 +72,7 @@ const Navbar = () => {
           <button
             className="bg-white text-indigo-500 hover:cursor-pointer hover:text-indigo-600  px-3 py-1 rounded transition-colors"
           >
-            Login
+           <Link to="/login">Login</Link> 
           </button>
         </div>
       )}
